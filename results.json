@@ -1,0 +1,37 @@
+{
+  "GPT2": {
+    "prompt1": 0.27,
+    "prompt2_cot": 0.27,
+    "prompt3": 0.27,
+    "prompt_minimal": 0.27,
+    "prompt_icl": 0.2733333333333333
+  },
+  "Gemma-2b": {
+    "prompt1": 0.27,
+    "prompt2_cot": 0.27,
+    "prompt3": 0.27,
+    "prompt_minimal": 0.28,
+    "prompt_icl": 0.2733333333333333
+  },
+  "flan-t5-large": {
+    "prompt1": 0.6533333333333333,
+    "prompt2_cot": 0.6333333333333333,
+    "prompt3": 0.5966666666666667,
+    "prompt_minimal": 0.4266666666666667,
+    "prompt_icl": 0.6433333333333333
+  },
+  "OPT-2.7b": {
+    "prompt1": 0.27,
+    "prompt2_cot": 0.27,
+    "prompt3": 0.27,
+    "prompt_minimal": 0.2733333333333333,
+    "prompt_icl": 0.29333333333333333
+  },
+  "Mistral-7B": {
+    "prompt1": 0.5866666666666667,
+    "prompt2_cot": 0.43333333333333335,
+    "prompt3": 0.5366666666666666,
+    "prompt_minimal": 0.2866666666666667,
+    "prompt_icl": 0.5433333333333333
+  }
+}
