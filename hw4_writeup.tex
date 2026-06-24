@@ -24,6 +24,26 @@ The guide on the Huggingface prompting documentation page was useful, particular
 
 \section*{Problem 5 --- Trend Analysis}
 
+Table~\ref{tab:results} shows validation accuracy for all five prompts across all five models.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lccccc}
+\toprule
+ & \textbf{prompt1} & \textbf{prompt2\_cot} & \textbf{prompt3} & \textbf{prompt\_minimal} & \textbf{prompt\_icl} \\
+\midrule
+GPT2          & 0.270 & 0.270 & 0.270 & 0.270 & 0.273 \\
+Gemma-2b      & 0.270 & 0.270 & 0.270 & 0.280 & 0.273 \\
+flan-t5-large & \textbf{0.653} & 0.633 & 0.597 & 0.427 & 0.643 \\
+OPT-2.7b      & 0.270 & 0.270 & 0.270 & 0.273 & 0.293 \\
+Mistral-7B    & 0.587 & 0.433 & 0.537 & 0.287 & 0.543 \\
+\bottomrule
+\end{tabular}
+\caption{Validation accuracy (300 examples) for each prompt--model combination. Bold indicates the best overall result.}
+\label{tab:results}
+\end{table}
+
 The results split cleanly along IFT vs.\ non-IFT lines. GPT2, OPT-2.7b, and Gemma-2b all land at or just above chance (0.25--0.29) regardless of prompt, which confirms that zero-shot classification via generation requires a model that has been instruction fine-tuned. No amount of prompt engineering rescued these models on this task.
 
 Among the IFT models, flan-t5-large was the strongest overall, reaching 0.653 with prompt1 and 0.643 with the in-context learning prompt. Its encoder-decoder structure likely helps here: the encoder reads the full question including all four options, and the decoder only needs to emit a short label. Mistral-7B was competitive on structured prompts (0.587, 0.543, 0.537 for prompt1, prompt\_icl, prompt3 respectively) but more sensitive to prompt format. The minimal prompt collapsed Mistral to 0.287, near chance, while flan-t5 degraded more gracefully to 0.427. Chain-of-thought helped flan-t5 slightly less than prompt1 but still performed well (0.633), whereas for Mistral CoT scored 0.433---lower than simpler formats---because the long reasoning chain made it harder to extract the final answer reliably.
